@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html ng-app>
+<head>
+	<title>Group Manager</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="name.js"></script>
+</head>
+<body>
+	<div id="left">
+		<div class="inner" ng-controller="NameCtrl">
+			<form ng-submit="addName()">
+				<input type="text" ng-model="NameText"  size="30">
+				<input type="submit" value="Add">
+			</form>
+
+			<br>
+			
+			<span class="sort">
+				<div ng-repeat="people in names">
+					<p>{{people.name}} <a href="" ng-click="removeName($index)">X</a></p>
+				</div>
+			</span>
+		</div>
+	</div>
+
+	<div id="right">
+		<div class="inner">
+			<span class="sort">
+
+			</span>
+
+			<div id="add">+</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	$("#add").click(function() {
+		var x = '<span class="sort"></span>'
+		$(x).sortable({connectWith: '.sort'}).insertBefore(this);
+	});
+	
+	$(".sort").sortable({connectWith: ".sort"});
+	</script>
+</body>
+</html>
+
