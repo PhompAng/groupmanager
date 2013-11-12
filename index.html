@@ -29,9 +29,12 @@
 
 	<div id="right">
 		<div class="inner">
-			<span class="sort">
-
-			</span>
+			<div class="group-container">
+				<h1>Group 1</h1>
+				<span class="sort">
+					<p>dakljsdj</p>
+				</span>
+			</div>
 
 			<div id="add">+</div>
 		</div>
@@ -39,8 +42,13 @@
 
 	<script type="text/javascript">
 	$("#add").click(function() {
-		var x = '<span class="sort"></span>'
-		$(x).sortable({connectWith: '.sort'}).insertBefore(this);
+		var i = ("div").length - 1;
+		var $x = $('<div class="group-container"></div>');
+		var $y = $('<span class="sort"></span>');
+		var $z = $('<h1>Group' + i + '</h1>');
+		$x.insertBefore(this);
+		$y.sortable({connectWith: '.sort'}).prependTo($x);
+		$z.prependTo($x);
 	});
 	
 	$(".sort").sortable({connectWith: ".sort"});
