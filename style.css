@@ -1,3 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Oxygen:400,300);
+html {
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 300;
+}
 #left {
 	position: fixed;
 	top: 0px;
@@ -12,6 +17,7 @@
 	right: 0px;
 	left: 50%;
 	bottom: 0px;
+	overflow-y: scroll;
 }
 .inner {
 	padding: 1.5em;
