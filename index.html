@@ -31,6 +31,7 @@
 		<div class="inner">
 			<div class="group-container">
 				<h1>Group 1</h1>
+				<a class="group-del">X</a>
 				<span class="sort">
 					<p>dakljsdj</p>
 				</span>
@@ -45,12 +46,17 @@
 		var $i = $(".inner > div").length;
 		var $x = $('<div class="group-container"></div>');
 		var $y = $('<span class="sort"></span>');
-		var $z = $('<h1>Group' + $i + '</h1>');
+		var $z = $('<h1>Group' + $i + '</h1><a class="group-del">X</a>');
 		$x.insertBefore(this);
 		$y.sortable({connectWith: '.sort'}).prependTo($x);
 		$z.prependTo($x);
 	});
 	
+	$("body").delegate(".group-del", "click", function() {
+		$(this).parent().find("p").prependTo("#left > .inner > .sort");
+		$(this).parent().remove();
+	});
+
 	$(".sort").sortable({connectWith: ".sort"});
 	</script>
 </body>

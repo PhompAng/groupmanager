@@ -41,6 +41,12 @@ html {
 	border-radius: 3px;
 	margin-bottom: 10px;
 }
+.group-del {
+	position: relative;
+	float: right;
+	margin-right: 1em;
+	z-index: 1000;
+}
 input[type="text"], select {
 	padding: 0.5em 3em; 
 	font-size: 13px; 
