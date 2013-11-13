@@ -42,10 +42,10 @@
 
 	<script type="text/javascript">
 	$("#add").click(function() {
-		var i = ("div").length - 1;
+		var $i = $(".inner > div").length;
 		var $x = $('<div class="group-container"></div>');
 		var $y = $('<span class="sort"></span>');
-		var $z = $('<h1>Group' + i + '</h1>');
+		var $z = $('<h1>Group' + $i + '</h1>');
 		$x.insertBefore(this);
 		$y.sortable({connectWith: '.sort'}).prependTo($x);
 		$z.prependTo($x);
