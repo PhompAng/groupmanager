@@ -21,7 +21,13 @@
 			
 			<span class="sort">
 				<div ng-repeat="people in names">
-					<p>{{people.name}} <a href="" ng-click="removeName($index)">X</a></p>
+					<p ng-hide="editing" ng-click="editing = true">{{people.name}} <a href="#" ng-click="removeName($index)">X</a></p>
+					<form ng-show="editing" ng-submit="editing = false">
+						<label>Name:</label>
+						<input type="text" ng-model="people.name" ng-required>
+						<br>
+						<button class="btn" type="submit">Save</button>
+					</form>
 				</div>
 			</span>
 		</div>
@@ -33,7 +39,6 @@
 				<h1>Group 1</h1>
 				<a class="group-del">X</a>
 				<span class="sort">
-					<p>dakljsdj</p>
 				</span>
 			</div>
 

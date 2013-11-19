@@ -13,5 +13,5 @@ function NameCtrl ($scope) {
 
 	$scope.removeName = function($index) {
 		$scope.names.splice($index,1);
-	}
+	};
 }
