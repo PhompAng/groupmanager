@@ -21,11 +21,10 @@
 			
 			<span class="sort">
 				<div ng-repeat="people in names">
-					<p ng-hide="editing" ng-click="editing = true">{{people.name}} <a href="#" ng-click="removeName($index)">X</a></p>
+					<p ng-hide="editing" ng-click="editing = true">{{people.name}} <a href="#" ng-click="removeName($index)"><span class="del">X</span></a></p>
 					<form ng-show="editing" ng-submit="editing = false">
 						<label>Name:</label>
 						<input type="text" ng-model="people.name" ng-required>
-						<br>
 						<input type="submit" value="Save">
 					</form>
 				</div>
@@ -36,10 +35,8 @@
 	<div id="right">
 		<div class="inner">
 			<div class="group-container">
-				<h1>Group 1</h1>
-				<a class="group-del">X</a>
-				<span class="sort">
-				</span>
+				<h1>Group 1</h1><a href="#"><span class="del">X</span></a>
+				<span class="sort"></span>
 			</div>
 
 			<div id="add">+</div>
@@ -51,7 +48,7 @@
 		var $i = $(".inner > div").length;
 		var $x = $('<div class="group-container"></div>');
 		var $y = $('<span class="sort"></span>');
-		var $z = $('<h1>Group' + $i + '</h1><a class="group-del">X</a>');
+		var $z = $('<h1>Group ' + $i + '</h1><a href="#"><span class="del">X</span></a>');
 		$x.insertBefore(this);
 		$y.sortable({connectWith: '.sort'}).prependTo($x);
 		$z.prependTo($x);
