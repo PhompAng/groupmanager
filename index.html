@@ -57,7 +57,7 @@
 		$z.prependTo($x);
 	});
 	
-	$("body").delegate(".group-del", "click", function() {
+	$("body").delegate(".del", "click", function() {
 		$(this).parent().find("p").prependTo("#left > .inner > .sort");
 		$(this).parent().remove();
 	});
