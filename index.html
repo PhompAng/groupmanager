@@ -21,7 +21,10 @@
 			
 			<span class="sort">
 				<div ng-repeat="people in names">
-					<p ng-hide="editing" ng-click="editing = true">{{people.name}} <a href="#" ng-click="removeName($index)"><span class="del">X</span></a></p>
+					<p ng-hide="editing" >{{people.name}} 
+						<a href="#" ng-click="removeName($index)"><span class="del">X</span></a>
+						<a href="#" ng-click="editing = true"><span class="edit">E</span></a>
+					</p>
 					<form ng-show="editing" ng-submit="editing = false">
 						<label>Name:</label>
 						<input type="text" ng-model="people.name" ng-required>

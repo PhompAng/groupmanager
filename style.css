@@ -50,6 +50,19 @@ html {
 	border-radius: 3px;
 	margin-bottom: 10px;
 }
+.edit {
+	background-color: #fff;
+	background-image: linear-gradient(#fff,#e8e8e8);
+	float: right;
+	border: 1px solid #e3e3e3;
+	border-radius: 3px;
+	padding: 0 0.5em;
+	margin: 0 5px;
+}
+.edit:hover {
+	background-color: #e0e0e0;
+	background-image: linear-gradient(#e0e0e0,#c2c2c2);
+}
 .del {
 	background-color: #ff3333;
 	background-image: linear-gradient(#ff3333,#cc0000);
