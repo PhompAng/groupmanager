@@ -58,8 +58,8 @@
 	});
 	
 	$("body").delegate(".del", "click", function() {
-		$(this).parent().find("p").prependTo("#left > .inner > .sort");
-		$(this).parent().remove();
+		$(this).parent().parent().find("p").prependTo("#left > .inner > .sort");
+		$(this).parent().parent().remove();
 	});
 
 	$(".sort").sortable({connectWith: ".sort"});
