@@ -2,68 +2,89 @@
 <html ng-app>
 <head>
 	<title>Group Manager</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="jquery-1.9.1.js"></script>
+	<link href="http://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="jquery-ui-1.10.3.custom.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script>
 	<script type="text/javascript" src="name.js"></script>
 </head>
 <body>
-	<div id="left">
-		<div class="inner" ng-controller="NameCtrl">
-			<form ng-submit="addName()">
-				<input type="text" ng-model="NameText"  size="30">
-				<input type="submit" value="Add">
-			</form>
-
-			<br>
-			
-			<span class="sort">
-				<div ng-repeat="people in names">
-					<p ng-hide="editing" >{{people.name}} 
-						<a href="#" ng-click="removeName($index)"><span class="del">X</span></a>
-						<a href="#" ng-click="editing = true"><span class="edit">E</span></a>
-					</p>
-					<form ng-show="editing" ng-submit="editing = false">
-						<label>Name:</label>
-						<input type="text" ng-model="people.name" ng-required>
-						<input type="submit" value="Save">
-					</form>
-				</div>
-			</span>
-		</div>
-	</div>
-
-	<div id="right">
-		<div class="inner">
-			<div class="group-container">
-				<h1>Group 1</h1><a href="#"><span class="del">X</span></a>
-				<span class="sort"></span>
+	<div id="left" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<div class="container-fluid" ng-controller="NameCtrl">
+			<h2>Members</h2>
+			<div class="row">
+				<form ng-submit="addName()" role="form">
+					<div class="form-group">
+						<div class="input-group col-lg-6">
+							<input type="text" ng-model="NameText" class="form-control">
+							<div class="input-group-btn">
+								<button type="submit" class="btn btn-default">Add</button>
+							</div><!-- /btn-group -->
+						</div><!-- /input-group -->
+					</div>
+				</form>
 			</div>
 
-			<div id="add">+</div>
+			<div class="row">
+				<ul class="sort list-group">
+					<li class="list-group-item" ng-repeat="people in names">
+						<div>
+							<p ng-hide="editing"><abbr ng-click="editing = true">{{people.name}}</abbr>
+								<button ng-click="removeName($index)" type="button" class="close del "><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							</p>
+							<form ng-show="editing" ng-submit="editing = false">
+								<label>Name:</label>
+								<input type="text" ng-model="people.name" ng-required>
+								<input type="submit" value="Save">
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div id="right" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<div class="container-fluid">
+			<div class="row">
+				<h2>Groups</h2>
+				<div class="sort group-container well">
+					<button type="button" class="close del "><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h1>Group 1</h1>
+				</div>
+			</div>
+			<div class="row">
+				<button class="btn btn-primary" id="add">+</button>
+			</div>
 		</div>
 	</div>
 
 	<script type="text/javascript">
-	$("#add").click(function() {
-		var $i = $(".inner > div").length;
-		var $x = $('<div class="group-container"></div>');
-		var $y = $('<span class="sort"></span>');
-		var $z = $('<h1>Group ' + $i + '</h1><a href="#"><span class="del">X</span></a>');
-		$x.insertBefore(this);
-		$y.sortable({connectWith: '.sort'}).prependTo($x);
-		$z.prependTo($x);
-	});
-	
-	$("body").delegate(".del", "click", function() {
-		$(this).parent().parent().find("p").prependTo("#left > .inner > .sort");
-		$(this).parent().parent().remove();
-	});
+		$("#add").click(function() {
+			var $i = $("#right > div").length+1;
+			var $x = $('<div class="sort group-container well"></div>');
+			//var $y = $('<span class="sort"></span>');
+			var $z = $('<button type="button" class="close del "><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h1>Group ' + $i + '</h1>');
+			$x.sortable({connectWith: '.sort'});
+			$x.insertBefore(this);
+			//$y.sortable({connectWith: '.sort'}).prependTo($x);
+			$z.prependTo($x);
+		});
+		
+		$("body").delegate(".del", "click", function() {
+			//$(this).parent().parent().find("p").prependTo("#left > .container > .sort");
+			$(this).parent().parent().remove();
+		});
 
-	$(".sort").sortable({connectWith: ".sort"});
+		$(".sort").sortable({connectWith: ".sort"});
 	</script>
 </body>
 </html>
-
